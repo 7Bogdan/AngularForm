@@ -71,16 +71,16 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .field__hobby {
-  width: 45%;
+  width: 60%;
 }
 
 .field__duration {
   padding-left: 2%;
-  width: 45%;
+  width: 38%;
 }
 
 .field__hobby__add{
-  height: inherit;
+  position: relative;
 }
 
 .field__spiner {

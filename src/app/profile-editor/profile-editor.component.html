@@ -101,7 +101,15 @@
   </div>
 
   <div formArrayName="hobbies" class="field__hobby_component">
-    <h3 class="field__title">Hobbies</h3>
+    <div class="field__title">Hobbies     <button
+          mat-icon-button
+          color="primary"
+          type="button"
+          class="field__hobby__add"
+          (click)="addHobby()"
+        >
+          <mat-icon>add</mat-icon>
+        </button></div>
 
     <div *ngFor="let hobby of hobbies.controls; let i = index">
       <div [formGroupName]="i">
@@ -124,16 +132,6 @@
             Please enter duration your hobby(in months)
           </mat-error>
         </mat-form-field>
-
-        <button
-          mat-icon-button
-          color="primary"
-          type="button"
-          class="field__hobby__add"
-          (click)="addHobby()"
-        >
-          <mat-icon>add</mat-icon>
-        </button>
 
       </div>
     </div>
