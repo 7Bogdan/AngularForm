@@ -47,7 +47,7 @@
       Sorry but this email address busy
     </mat-error>
 
-    <div  class="field__spiner">
+    <div *ngIf="profileForm.get('email')?.pending" class="field__spiner">
       <mat-spinner [diameter]="25"></mat-spinner>
     </div>
   </mat-form-field>
