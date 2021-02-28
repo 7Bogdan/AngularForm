@@ -14,6 +14,18 @@ input[type="number"]::-webkit-inner-spin-button {
   border: 1px solid black;
 }
 
+@media screen and (max-width: 900px) {
+  .front__end__questionnaire {
+    margin: 5%;
+    width: 80%;
+  }
+
+  .field__spiner {
+    left: 90%!important;
+  }
+
+}
+
 .field__title{
   color: #8a8a8a;
   text-align: center;
