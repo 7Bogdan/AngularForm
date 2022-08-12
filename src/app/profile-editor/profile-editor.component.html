@@ -1,0 +1,154 @@
+<form
+  [formGroup]="profileForm"
+  (ngSubmit)="onSubmit()"
+  class="front__end__questionnaire"
+>
+  <h1 class="field__title">Registration form for Front-End</h1>
+  <mat-form-field class="field__name" appearance="fill">
+    <mat-label>Name</mat-label>
+    <input formControlName="firstName" matInput />
+    <mat-error *ngIf="profileForm.get('firstName')?.errors?.required">
+      Please enter your name
+    </mat-error>
+
+    <mat-error *ngIf="profileForm.get('firstName')?.errors?.minlength" >
+      Your name must be at least 3 letters long
+    </mat-error>
+
+  </mat-form-field>
+
+  <mat-form-field class="field__surname" appearance="fill">
+    <mat-label>last name</mat-label>
+    <input formControlName="lastName"  matInput />
+    <mat-error *ngIf="profileForm.get('lastName')?.errors?.required">
+      Please enter your last name
+    </mat-error>
+
+    <mat-error *ngIf="profileForm.get('lastName')?.errors?.minlength" >
+      Your last name must be at least 4 letters long
+    </mat-error>
+
+  </mat-form-field>
+
+  <mat-form-field class="field__email" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input
+      formControlName="email"
+      matInput
+      type="email"
+      placeholder="test@test.test"
+    />
+
+    <mat-error *ngIf="profileForm.get('email')?.errors?.required">
+      Please enter your Email address
+    </mat-error>
+
+    <mat-error *ngIf="profileForm.get('email')?.errors?.invalid">
+      Sorry but this email address busy
+    </mat-error>
+
+    <div *ngIf="profileForm.get('email')?.pending" class="field__spiner">
+      <mat-spinner [diameter]="25"></mat-spinner>
+    </div>
+
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="field__birthday">
+    <mat-label>Choose your birthday</mat-label>
+    <input
+      formControlName="dateOfBirth"
+      matInput
+      [matDatepicker]="datepicker"
+      [min]="minDate"
+      [max]="maxDate"
+
+    />
+    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker startView="multi-year"> </mat-datepicker>
+    <mat-error>
+      Please enter your date of bird
+    </mat-error>
+  </mat-form-field>
+
+  <div class="field__framework__component">
+    <h3 class="field__title">Framework</h3>
+    <mat-form-field class="field__framework" appearance="fill">
+      <mat-label>Framework</mat-label>
+      <mat-select
+        formControlName="framework"
+        (selectionChange)="showFrameworkVersion($event)"
+      >
+        <mat-option *ngFor="let framework of FrameworkList" [value]="framework">
+          {{ framework }}
+        </mat-option>
+      </mat-select>
+      <mat-error>
+        Please enter Framework
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="field__version" appearance="fill">
+      <mat-label>Version</mat-label>
+      <mat-select formControlName="frameworkVersion">
+        <mat-option *ngFor="let version of frameworkVersions" [value]="version">
+          {{ version }}
+        </mat-option>
+      </mat-select>
+      <mat-error>
+        Please enter Framework version
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div formArrayName="hobbies" class="field__hobby_component">
+    <div class="field__title">Hobbies     <button
+          mat-icon-button
+          color="primary"
+          type="button"
+          class="field__hobby__add"
+          (click)="addHobby()"
+        >
+          <mat-icon>add</mat-icon>
+        </button></div>
+
+    <div *ngFor="let hobby of hobbies.controls; let i = index">
+      <div [formGroupName]="i">
+        <mat-form-field class="field__hobby" appearance="fill">
+          <mat-label>Hobby</mat-label>
+          <mat-select formControlName="name">
+            <mat-option *ngFor="let hobby of HobbyList" [value]="hobby"
+              >{{ hobby }}
+            </mat-option>
+          </mat-select>
+          <mat-error >
+            Please enter your hobby
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="field__duration" appearance="fill">
+          <mat-label>Duration(in months)</mat-label>
+          <input  matInput type="number" formControlName="duration" />
+          <mat-error >
+            Please enter duration your hobby(in months)
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="!profileForm.valid"
+  >
+    Submit
+  </button>
+</form>
+
+<hr />
+
+<p>Form Value: {{ profileForm.value | json }}</p>
+
+<p>Form Status: {{ profileForm.status }}</p>

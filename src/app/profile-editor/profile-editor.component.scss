@@ -1,0 +1,90 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.front__end__questionnaire {
+  border-radius: 5%;
+  margin: 3% auto 0 auto;
+  padding: 2%;
+  width: 30%;
+  height: auto;
+  border: 1px solid black;
+}
+
+@media screen and (max-width: 900px) {
+  .front__end__questionnaire {
+    margin: 5%;
+    width: 80%;
+  }
+
+  .field__spiner {
+    left: 90%!important;
+  }
+
+}
+
+.field__title{
+  color: #8a8a8a;
+  text-align: center;
+}
+
+.submit__questionnaire {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.field__birthday {
+  display: block;
+}
+
+.field__name {
+  display: block;
+}
+
+.field__surname {
+  display: block;
+}
+
+.field__framework__component {
+}
+
+.field__framework {
+  width: 50%;
+}
+
+.field__version {
+  padding-left: 2%;
+  width: 48%;
+}
+
+.field__email {
+  display: block;
+}
+
+.field__hobby_component {
+  display: inline;
+  text-align: center;
+  height: 70.13px;
+}
+
+.field__hobby {
+  width: 60%;
+}
+
+.field__duration {
+  padding-left: 2%;
+  width: 38%;
+}
+
+.field__hobby__add{
+  position: relative;
+}
+
+.field__spiner {
+  position: absolute;
+  left: 103%;
+  top: -25%;
+}
